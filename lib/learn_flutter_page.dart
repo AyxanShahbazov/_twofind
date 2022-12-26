@@ -1,0 +1,99 @@
+import 'package:flutter/material.dart';
+
+class LearnFlutterPage extends StatefulWidget {
+  const LearnFlutterPage({super.key});
+
+  @override
+  State<LearnFlutterPage> createState() => _LearnFlutterPageState();
+}
+
+class _LearnFlutterPageState extends State<LearnFlutterPage> {
+  bool isSwitch = false;
+  bool? isCheckBox = false;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Image.asset('Images/concept13.jpg'),
+            const SizedBox(
+              height: 10,
+            ),
+            const Divider(
+              color: Colors.black,
+            ),
+            Container(
+              margin: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(10.0),
+              color: Colors.blueGrey,
+              width: double.infinity,
+              child: const Center(
+                child: Text(
+                  'ha ha ha',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+            ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: isSwitch ? Colors.green : Colors.blue,
+                ),
+                onPressed: () {
+                  debugPrint('Eleveted Button');
+                },
+                child: const Text('Eleveted Button')),
+            OutlinedButton(
+                onPressed: () {
+                  debugPrint('OutlinedButton');
+                },
+                child: const Text('OutlinedButton')),
+            TextButton(
+                onPressed: () {
+                  debugPrint('TextButton');
+                },
+                child: const Text('TextButton')),
+            GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: (() {
+                debugPrint('Gesture is row indicator');
+              }),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: const [
+                  Icon(
+                    Icons.local_fire_department,
+                    color: Colors.red,
+                  ),
+                  Text('Row Widget'),
+                  Icon(
+                    Icons.local_fire_department,
+                    color: Colors.yellow,
+                  ),
+                ],
+              ),
+            ),
+            Switch(
+                value: isSwitch,
+                onChanged: (bool newBool) {
+                  setState(() {
+                    isSwitch = newBool;
+                  });
+                }),
+            Checkbox(
+                value: isCheckBox,
+                onChanged: (bool? newBool) {
+                  setState(() {
+                    isCheckBox = newBool;
+                  });
+                }),
+            Image.network(
+                'https://heydan.ai/wp-content/uploads/2020/12/einstein-voice-abstract.jpg')
+          ],
+        ),
+      ),
+    );
+  }
+}
