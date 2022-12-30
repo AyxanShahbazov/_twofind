@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.orange,
-        fontFamily: 'JosefinSans-Regular',
+        fontFamily: 'JosefinSans',
       ),
       home: const RootPage(),
     );
@@ -39,7 +39,7 @@ class _RootPageState extends State<RootPage> {
   Widget build(BuildContext context) {
     double displayWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 247, 239, 255),
+      backgroundColor:const Color.fromARGB(255, 247, 239, 255),
       body: pages[currentIndex],
       bottomNavigationBar: Container(
         margin: EdgeInsets.all(displayWidth * .07),
@@ -113,12 +113,12 @@ class _RootPageState extends State<RootPage> {
                             curve: Curves.fastLinearToSlowEaseIn,
                             child: Text(
                               index == currentIndex
-                                  ? '${listOfStrings[index]}'
+                                  ? listOfStrings[index]
                                   : '',
                               style: const TextStyle(
                                 color: Colors.orangeAccent,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 15,
+
+                                fontSize: 17,
                               ),
                             ),
                           ),
@@ -162,5 +162,5 @@ List<IconData> listOfIcons = [
 List<String> listOfStrings = [
   'Home',
   'Search',
-  'Profiles',
+  'Profile',
 ];
