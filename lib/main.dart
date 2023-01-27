@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_application_2/home_page.dart';
-import 'package:flutter_application_2/profile_page.dart';
-import 'package:flutter_application_2/search_page.dart';
+
+import 'package:flutter_application_2/utilities/router/app_router.dart';
+import 'package:flutter_application_2/utilities/router/route_paths.dart';
+import 'package:flutter_application_2/presentation/screens/home%20screen/home_page.dart';
+import 'package:flutter_application_2/presentation/screens/profile screen/profile_page.dart';
+import 'package:flutter_application_2/presentation/screens/search%20screen/search_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,16 +13,19 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-  
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      title: '2Find',
       theme: ThemeData(
+        backgroundColor: const Color.fromARGB(255, 248, 240, 255),
         primarySwatch: Colors.orange,
         fontFamily: 'JosefinSans',
       ),
+      onGenerateRoute: AppRouter.generateRoute,
+      initialRoute: RoutePaths.SPLASH,
       home: const RootPage(),
     );
   }
@@ -39,7 +45,7 @@ class _RootPageState extends State<RootPage> {
   Widget build(BuildContext context) {
     double displayWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor:const Color.fromARGB(255, 247, 239, 255),
+      backgroundColor: Color.fromARGB(255, 248, 240, 255),
       body: pages[currentIndex],
       bottomNavigationBar: Container(
         margin: EdgeInsets.all(displayWidth * .07),
@@ -112,12 +118,9 @@ class _RootPageState extends State<RootPage> {
                             duration: const Duration(seconds: 1),
                             curve: Curves.fastLinearToSlowEaseIn,
                             child: Text(
-                              index == currentIndex
-                                  ? listOfStrings[index]
-                                  : '',
+                              index == currentIndex ? listOfStrings[index] : '',
                               style: const TextStyle(
                                 color: Colors.orangeAccent,
-
                                 fontSize: 17,
                               ),
                             ),
@@ -129,8 +132,9 @@ class _RootPageState extends State<RootPage> {
                           AnimatedContainer(
                             duration: const Duration(seconds: 1),
                             curve: Curves.fastLinearToSlowEaseIn,
-                            width:
-                                index == currentIndex ? displayWidth * .043 : 20,
+                            width: index == currentIndex
+                                ? displayWidth * .043
+                                : 20,
                           ),
                           Icon(
                             listOfIcons[index],
