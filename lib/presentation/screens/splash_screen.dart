@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/utilities/router/route_paths.dart';
+import 'package:animations/animations.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:page_transition/page_transition.dart';
 
 import '../widgets/custom_logo_widget.dart';
-
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -25,6 +27,7 @@ class _SplashScreenState extends State<SplashScreen>
       })
       ..addStatusListener((status) {
         if (status == AnimationStatus.completed) {
+
           print('-- finished splash animation');
           Navigator.of(context).pushNamed(RoutePaths.HOME);
         }
@@ -37,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen>
     super.initState();
   }
 
-    @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,

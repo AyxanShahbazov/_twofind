@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import '../../../utilities/constants/app_constants.dart';
-import 'home_product_list.dart';
-import 'package:flutter_application_2/dummy.dart';
-import 'package:flutter_application_2/utilities/router/route_paths.dart';
+import 'package:flutter_application_2/size_config.dart';
 import 'package:flutter_application_2/presentation/widgets/custom_text_widget.dart';
+import '../../../utilities/constants/app_colours.dart';
+import '../home screen/component/search_field.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 247, 239, 255),
       body: ListView(
         children: [
           Container(
@@ -26,9 +25,7 @@ class HomePage extends StatelessWidget {
                       'assets/images/hi_icon.png',
                       width: 24,
                     ),
-                    
                     const SizedBox(width: 5),
-
                     const Text(
                       'Hi, Finder!',
                       style: TextStyle(fontSize: 25),
@@ -37,15 +34,22 @@ class HomePage extends StatelessWidget {
                 ),
                 const Gap(40),
                 const Text(
-                  'What you want to order for today?',
+                  "Let's ease your finding!",
                   style: TextStyle(fontSize: 40),
                 ),
                 Image.asset('assets/images/home.png'),
                 const CustomTextWidget(
-                  alignment: Alignment.centerLeft, text: null,
+                  alignment: Alignment.centerLeft,
+                  text: null,
                 ),
               ],
             ),
+          ),
+          Container(
+            padding: const EdgeInsets.only(left: 20, right: 20),
+            child: (
+              const SearchField()
+            ), 
           ),
         ],
       ),

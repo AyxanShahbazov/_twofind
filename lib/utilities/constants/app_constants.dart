@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../size_config.dart';
+import '../../utilities/constants/app_colours.dart';
 
 class AppConstants {
   static AppConstants? _instance;
@@ -29,7 +31,6 @@ class AppConstants {
 }
 
 
-
 double setFont(double fontSize) {
   return ScreenUtil().setSp(fontSize);
 }
@@ -48,7 +49,7 @@ EdgeInsets paddingOnly(
       right: right,
       top: top,
       bottom: bottom,
-    );
+);
 
 EdgeInsets get paddingAll4 => EdgeInsets.all(4.0);
 EdgeInsets get paddingAll2 => EdgeInsets.all(2.0);
@@ -57,3 +58,18 @@ EdgeInsets get paddingAll10 => EdgeInsets.all(10.0);
 EdgeInsets get paddingAll12 => EdgeInsets.all(12.0);
 EdgeInsets get paddingAll16 => EdgeInsets.all(16.0);
 EdgeInsets get paddingAll24 => EdgeInsets.all(24.0);
+
+final otpInputDecoration = InputDecoration(
+  contentPadding:
+      EdgeInsets.symmetric(vertical: getProportionateScreenWidth(15)),
+  border: outlineInputBorder(),
+  focusedBorder: outlineInputBorder(),
+  enabledBorder: outlineInputBorder(),
+);
+
+OutlineInputBorder outlineInputBorder() {
+  return OutlineInputBorder(
+    borderRadius: BorderRadius.circular(getProportionateScreenWidth(15)),
+    borderSide: BorderSide(color: AppColors.textColor),
+  );
+}

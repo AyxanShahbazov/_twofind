@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'package:animations/animations.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:flutter_application_2/utilities/router/app_router.dart';
 import 'package:flutter_application_2/utilities/router/route_paths.dart';
 import 'package:flutter_application_2/presentation/screens/home%20screen/home_page.dart';
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: '2Find',
       theme: ThemeData(
-        backgroundColor: const Color.fromARGB(255, 248, 240, 255),
+        scaffoldBackgroundColor: const Color.fromARGB(255, 248, 240, 255),
         primarySwatch: Colors.orange,
         fontFamily: 'JosefinSans',
       ),
@@ -39,14 +41,24 @@ class RootPage extends StatefulWidget {
 }
 
 class _RootPageState extends State<RootPage> {
+  int index = 0;
   var currentIndex = 0;
   List<Widget> pages = const [HomePage(), SearchPage(), ProfilePage()];
   @override
   Widget build(BuildContext context) {
     double displayWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 248, 240, 255),
-      body: pages[currentIndex],
+      backgroundColor: const Color.fromARGB(255, 248, 240, 255),
+      body: PageTransitionSwitcher(
+        duration: const Duration(seconds: 1),
+        transitionBuilder: (child, animation, secondaryAnimation) =>
+            FadeThroughTransition(
+          animation: animation,
+          secondaryAnimation: secondaryAnimation,
+          child: child,
+        ),
+        child: pages[index],
+      ),
       bottomNavigationBar: Container(
         margin: EdgeInsets.all(displayWidth * .07),
         height: displayWidth * .155,
@@ -66,9 +78,9 @@ class _RootPageState extends State<RootPage> {
           scrollDirection: Axis.horizontal,
           padding: EdgeInsets.symmetric(horizontal: displayWidth * .0),
           itemBuilder: (context, index) => InkWell(
-            onTap: () {
-              setState(() {
-                currentIndex = index;
+            onTap: () { setState(() {
+                this.index = index;
+                currentIndex = index; 
                 HapticFeedback.lightImpact();
               });
             },
