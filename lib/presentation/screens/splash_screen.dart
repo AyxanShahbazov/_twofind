@@ -4,6 +4,7 @@ import 'package:animations/animations.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:page_transition/page_transition.dart';
 
+
 import '../widgets/custom_logo_widget.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -14,9 +15,10 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen>
-    with SingleTickerProviderStateMixin {
+  with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _animation;
+  int index = 0;
 
   @override
   void initState() {
@@ -29,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen>
         if (status == AnimationStatus.completed) {
 
           print('-- finished splash animation');
-          Navigator.of(context).pushNamed(RoutePaths.HOME);
+          Navigator.of(context).pushNamed(RoutePaths.ONBOARD);
         }
       });
     _animation = Tween<double>(begin: 0.0, end: 1.0).animate(

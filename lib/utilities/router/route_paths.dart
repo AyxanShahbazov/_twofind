@@ -6,6 +6,7 @@ class RoutePaths {
 
   static const ROOT = '/';
   static const SPLASH = 'splash';
+  static const ONBOARD = 'onboard';
   static const HOME = 'home';
   static const PLACE = 'place';
 }

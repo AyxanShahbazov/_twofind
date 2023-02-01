@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:animations/animations.dart';
-import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:flutter_application_2/utilities/router/app_router.dart';
 import 'package:flutter_application_2/utilities/router/route_paths.dart';
 import 'package:flutter_application_2/presentation/screens/home%20screen/home_page.dart';
 import 'package:flutter_application_2/presentation/screens/profile screen/profile_page.dart';
 import 'package:flutter_application_2/presentation/screens/search%20screen/search_page.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: '2Find',
+      title: '2find',
       theme: ThemeData(
         scaffoldBackgroundColor: const Color.fromARGB(255, 248, 240, 255),
         primarySwatch: Colors.orange,
@@ -52,11 +51,11 @@ class _RootPageState extends State<RootPage> {
       body: PageTransitionSwitcher(
         duration: const Duration(seconds: 1),
         transitionBuilder: (child, animation, secondaryAnimation) =>
-            FadeThroughTransition(
-          animation: animation,
-          secondaryAnimation: secondaryAnimation,
-          child: child,
-        ),
+          FadeThroughTransition(
+            animation: animation,
+            secondaryAnimation: secondaryAnimation,
+            child: child,
+          ),
         child: pages[index],
       ),
       bottomNavigationBar: Container(

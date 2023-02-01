@@ -35,7 +35,8 @@ class HomePage extends StatelessWidget {
                 const Gap(40),
                 const Text(
                   "Let's ease your finding!",
-                  style: TextStyle(fontSize: 40),
+                  style: TextStyle(fontSize: 40, height: 1.1,
+                  ),
                 ),
                 Image.asset('assets/images/home.png'),
                 const CustomTextWidget(

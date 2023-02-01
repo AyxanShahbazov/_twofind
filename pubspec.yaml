@@ -52,6 +52,7 @@ dependencies:
   flutter_svg: ^0.22.0
   scrollable_positioned_list: ^0.2.0-nullsafety.0
   animated_splash_screen: ^1.3.0
+  lottie: ^2.2.0
 
 
 dev_dependencies:
@@ -83,6 +84,10 @@ flutter:
      - assets/images/back.png
      - assets/images/home.png
      - assets/images/demo.png
+     - assets/images/
+     - assets/animations/1.json
+     - assets/animations/2.json
+     - assets/animations/3.json
 
   fonts:
     - family: JosefinSans
