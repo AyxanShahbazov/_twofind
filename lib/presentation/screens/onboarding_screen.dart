@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_2/main.dart';
-import 'package:animations/animations.dart';
-
+import 'package:flutter_application_2/presentation/screens/welcome_screen.dart';
+import 'package:flutter_application_2/provider/auth_provider.dart';
 import 'package:lottie/lottie.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_application_2/presentation/screens/auth/registration/register_screen.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
@@ -33,21 +35,23 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       height: 8.0,
       width: isActive ? 24.0 : 16.0,
       decoration: BoxDecoration(
-        color: isActive ? const Color.fromARGB(255, 0, 0, 0) : const Color(0xFF7B51D3),
+        color: isActive
+            ? const Color.fromARGB(255, 0, 0, 0)
+            : const Color(0xFF7B51D3),
         borderRadius: const BorderRadius.all(Radius.circular(12)),
       ),
-      
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final ap = Provider.of<AuthProvider>(context, listen: false);
     return Scaffold(
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
         child: Container(
           decoration: const BoxDecoration(
-            color:  Color.fromARGB(255, 248, 240, 255),
+            color: Color.fromARGB(255, 248, 240, 255),
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 40.0),
@@ -61,7 +65,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const RootPage()),
+                            builder: (context) => const WelcomeScreen()),
                       );
                     },
                     child: const Text(
@@ -89,10 +93,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Lottie.asset(
-                              'assets/animations/1.json',
-                              animate: true
-                            ),
+                            Lottie.asset('assets/animations/1.json',
+                                animate: true),
                             const SizedBox(height: 30.0),
                             const Text(
                               'Ease your finding',
@@ -118,7 +120,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         padding: const EdgeInsets.all(40.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children:  <Widget>[
+                          children: <Widget>[
                             Lottie.asset('assets/animations/2.json',
                                 animate: true),
                             const SizedBox(height: 30.0),
@@ -220,14 +222,25 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           ? Container(
               height: 100.0,
               width: double.infinity,
-
               child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const RootPage()),
-                  );
+                onTap: () async {
+                  if (ap.isSignedIn == true) {
+                    await ap.getDataFromSP().whenComplete(
+                          () => Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const RootPage(),
+                            ),
+                          ),
+                        );
+                  } else {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const WelcomeScreen(),
+                      ),
+                    );
+                  }
                 },
                 child: const Center(
                   child: Padding(

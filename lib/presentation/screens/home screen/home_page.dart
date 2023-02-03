@@ -39,10 +39,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 Image.asset('assets/images/home.png'),
-                const CustomTextWidget(
-                  alignment: Alignment.centerLeft,
-                  text: null,
-                ),
+                
               ],
             ),
           ),

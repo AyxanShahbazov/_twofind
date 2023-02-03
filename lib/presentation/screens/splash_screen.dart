@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/utilities/router/route_paths.dart';
-import 'package:animations/animations.dart';
-import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:page_transition/page_transition.dart';
-
-
 import '../widgets/custom_logo_widget.dart';
+import 'package:flutter_application_2/main.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_application_2/provider/auth_provider.dart';
+import 'package:flutter_application_2/presentation/screens/auth/registration/register_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -22,15 +21,27 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   void initState() {
+    final ap = Provider.of<AuthProvider>(context, listen: false);
     _animationController = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 2750))
       ..addListener(() {
         setState(() {});
       })
-      ..addStatusListener((status) {
-        if (status == AnimationStatus.completed) {
-
+      ..addStatusListener((status) async {
+        if (status == AnimationStatus.completed && ap.isSignedIn == true) {
+          await ap.getDataFromSP().whenComplete(
+                () => Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const RootPage(),
+                  ),
+                ),
+              );
           print('-- finished splash animation');
+          
+        }
+
+        if (status == AnimationStatus.completed && ap.isSignedIn == false) {
           Navigator.of(context).pushNamed(RoutePaths.ONBOARD);
         }
       });

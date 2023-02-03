@@ -6,9 +6,14 @@ import 'package:flutter_application_2/utilities/router/route_paths.dart';
 import 'package:flutter_application_2/presentation/screens/home%20screen/home_page.dart';
 import 'package:flutter_application_2/presentation/screens/profile screen/profile_page.dart';
 import 'package:flutter_application_2/presentation/screens/search%20screen/search_page.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_application_2/provider/auth_provider.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -17,17 +22,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: '2find',
-      theme: ThemeData(
-        scaffoldBackgroundColor: const Color.fromARGB(255, 248, 240, 255),
-        primarySwatch: Colors.orange,
-        fontFamily: 'JosefinSans',
-      ),
-      onGenerateRoute: AppRouter.generateRoute,
-      initialRoute: RoutePaths.SPLASH,
-      home: const RootPage(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => AuthProvider()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: '2find',
+        theme: ThemeData(
+          scaffoldBackgroundColor: const Color.fromARGB(255, 248, 240, 255),
+          primarySwatch: Colors.orange,
+          fontFamily: 'JosefinSans',
+        ),
+        onGenerateRoute: AppRouter.generateRoute,
+        initialRoute: RoutePaths.SPLASH,
+        home: const RootPage(),
+      )
     );
   }
 }

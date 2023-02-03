@@ -1,15 +1,18 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_application_2/provider/auth_provider.dart';
 import 'package:flutter_application_2/presentation/screens/profile screen/components/custom_clipper.dart';
-import 'package:flutter_application_2/presentation/widgets/custom_text_widget.dart';
 import 'package:flutter_application_2/utilities/constants/app_colours.dart';
 import 'package:flutter_application_2/utilities/constants/app_constants.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_application_2/presentation/screens/welcome_screen.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final ap = Provider.of<AuthProvider>(context, listen: false);
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 248, 240, 255),
       body: Column(
@@ -27,31 +30,44 @@ class ProfilePage extends StatelessWidget {
                   colorBlendMode: BlendMode.darken,
                 ),
               ),
+              IconButton(
+                onPressed: () {
+                  ap.userSignOut().then(
+                        (value) => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const WelcomeScreen(),
+                          ),
+                        ),
+                      );
+                },
+                color: Colors.white,
+                icon: const Icon(Icons.exit_to_app_outlined),
+                iconSize: 35,
+                padding:
+                  const EdgeInsets.only(top: 50, bottom: 10, left: 20, right: 10),
+                ),
               Positioned(
-                top: 834 / 3 - 98,
-                left: 375 / 3,
-                child: Container(
-                  height: 140,
-                  width: 140,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(32),
-                    image: const DecorationImage(
-                      image: AssetImage('assets/images/pp.png'),
-                    ),
+                top: 854 / 3 - 98,
+                left: 384 / 3,
+                child: Column(
+                   children: [
+                    CircleAvatar(
+                    backgroundColor: Colors.purple,
+                    backgroundImage: NetworkImage(ap.userModel.profilePic),
+                    radius: 65,
                   ),
+                   ]
                 ),
               ),
             ],
           ),
-          CustomTextWidget(
-            paddingBottom: 4,
-            text: Text(
-              'Your Nickname',
+          Text(
+              ap.userModel.name,
               style: AppConstants.textStyle(
                 fontSize: 24,
               ),
             ),
-          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
