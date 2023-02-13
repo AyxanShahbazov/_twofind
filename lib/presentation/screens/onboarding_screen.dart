@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_2/main.dart';
 import 'package:flutter_application_2/presentation/screens/welcome_screen.dart';
-import 'package:flutter_application_2/provider/auth_provider.dart';
+import 'package:flutter_application_2/infrastructure/provider/auth_provider.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_application_2/presentation/screens/auth/registration/register_screen.dart';

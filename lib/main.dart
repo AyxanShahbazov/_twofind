@@ -7,7 +7,7 @@ import 'package:flutter_application_2/presentation/screens/home%20screen/home_pa
 import 'package:flutter_application_2/presentation/screens/profile screen/profile_page.dart';
 import 'package:flutter_application_2/presentation/screens/search%20screen/search_page.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_application_2/provider/auth_provider.dart';
+import 'package:flutter_application_2/infrastructure/provider/auth_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 

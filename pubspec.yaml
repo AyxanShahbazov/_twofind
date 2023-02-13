@@ -36,7 +36,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-
+  freezed_annotation: ^2.2.0
   gap: ^2.0.1
   getwidget: ^2.0.4
   flutter_screenutil: ^5.6.0
@@ -60,6 +60,13 @@ dependencies:
   pinput: ^2.2.23
   country_picker: ^2.0.19
   image_picker: ^0.8.6+1
+  simple_animations: ^5.0.0+3
+  page_transition: ^2.0.9
+  animated_text_kit: ^4.2.2
+  bloc: ^8.1.1
+  flutter_secure_storage: ^8.0.0
+  flutter_bloc: ^8.1.2
+  cached_network_image: ^3.2.3
 
 
 dev_dependencies:
@@ -83,17 +90,10 @@ flutter:
   uses-material-design: true
 
   assets:
-     - assets/images/hi_icon.png
-     - assets/images/logo2.png
-     - assets/images/primary.png
-     - assets/images/secondary.png
-     - assets/images/pp.png
-     - assets/images/back.png
-     - assets/images/home.png
-     - assets/images/demo.png
-     - assets/animations/1.json
-     - assets/animations/2.json
-     - assets/animations/3.json
+     - assets/images/
+     - assets/animations/
+     - assets/svg/star.svg
+     - assets/images/place.png
 
   fonts:
     - family: JosefinSans

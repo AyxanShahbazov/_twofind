@@ -1,6 +1,6 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/provider/auth_provider.dart';
+import 'package:flutter_application_2/infrastructure/provider/auth_provider.dart';
 import 'package:flutter_application_2/presentation/widgets/custom_button.dart';
 import 'package:provider/provider.dart';
 

@@ -3,13 +3,13 @@ import 'package:flutter_application_2/infrastructure/models/home_model.dart';
 class Dummy {
   static final List<HomeModel> products = [
     HomeModel(
-        title: 'Sheldon Coffee', rating: 5, imageUrl: 'assets/images/demo.png'),
+        name: 'Sheldon Coffee', rating: 5, imageUrl: 'assets/images/demo.png'),
     HomeModel(
-        title: 'Frychicken', rating: 5, imageUrl: 'assets/images/demo.png'),
+        name: 'Frychicken', rating: 5, imageUrl: 'assets/images/demo.png'),
     HomeModel(
-        title: 'Sheldon Coffee', rating: 5, imageUrl: 'assets/images/demo.png'),
+        name: 'Sheldon Coffee', rating: 5, imageUrl: 'assets/images/demo.png'),
     HomeModel(
-        title: 'Frychicken', rating: 5, imageUrl: 'assets/images/demo.png'),
+        name: 'Frychicken', rating: 5, imageUrl: 'assets/images/demo.png'),
   ];
 
   static final List<String> categories = [

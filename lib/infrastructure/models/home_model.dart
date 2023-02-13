@@ -1,8 +1,8 @@
 class HomeModel {
   final String imageUrl;
-  final String title;
+  final String name;
   final double rating;
 
   HomeModel(
-      {required this.imageUrl, required this.title, required this.rating});
+      {required this.imageUrl, required this.name, required this.rating});
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/main.dart';
 import 'package:flutter_application_2/presentation/screens/home%20screen/home_page.dart';
-import 'package:flutter_application_2/provider/auth_provider.dart';
+import 'package:flutter_application_2/infrastructure/provider/auth_provider.dart';
 import 'package:flutter_application_2/utilities/img picker/utils.dart';
 import 'package:flutter_application_2/presentation/widgets/custom_button.dart';
 import 'package:pinput/pinput.dart';

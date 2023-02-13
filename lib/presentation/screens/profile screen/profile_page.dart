@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/provider/auth_provider.dart';
+import 'package:flutter_application_2/infrastructure/provider/auth_provider.dart';
 import 'package:flutter_application_2/presentation/screens/profile screen/components/custom_clipper.dart';
 import 'package:flutter_application_2/utilities/constants/app_colours.dart';
 import 'package:flutter_application_2/utilities/constants/app_constants.dart';
